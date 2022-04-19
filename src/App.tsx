@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { FunctionComponent } from 'react';
 import './App.css';
+import { configureStore } from './store/configureStore';
+import { Provider } from 'react-redux';
+import BasePage from './components/BasePage';
 
-function App() {
+const App: FunctionComponent = () => {
+  const store = configureStore();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div id="app">
+        <Provider store={store}>
+          <BasePage />
+        </Provider>
+      </div>
+    </>
   );
-}
+};
 
 export default App;
